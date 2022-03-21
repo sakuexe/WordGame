@@ -17,7 +17,7 @@ keys.click(function(e){
 });
 
 moveKeys.click(function(e){
-    if ($(e.target)[0].id === "left"){
+    if ($(e.target)[0].id === "left" || $(e.target)[0].id === "lefticon"){
         if (tile == 0){
             console.log("loppuun")
             tile = 4;
@@ -31,7 +31,7 @@ moveKeys.click(function(e){
             tile = 0;
         }
     }
-    else if ($(e.target)[0].id === "right"){
+    else if ($(e.target)[0].id === "right" || $(e.target)[0].id === "righticon"){
         if (tile == 4){
             console.log("alkuun")
             tile = 0;
