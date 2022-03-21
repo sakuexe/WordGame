@@ -1,0 +1,128 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black">
+    
+    <nav class="navbar navbar-expand-lg bg-transparent navbar-dark py-3 shadow p-3 mb-5 bg-body">
+        <div class="container px-5 initialspacing">
+            <a href="#" class="navbar-brand"><i class="bi bi-house-fill"></i></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navmenu"> <span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills" class="nav-link">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link">Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Credits</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="bg-dark">
+        <div class="container text-light py-4">
+
+            <h1 class="display-1  mb-3">Word game</h1>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam soluta voluptatem minus fugit 
+                impedit enim quod, qui ex fugiat. Omnis, consequuntur? Eligendi corporis ab rerum molestiae. 
+                Dolorem, fuga! Expedita labore nemo doloremque ut! Ipsa numquam repellendus, nulla officia saepe quam!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam soluta voluptatem minus fugit 
+                impedit enim quod, qui ex fugiat. Omnis, consequuntur? Eligendi corporis ab rerum molestiae. 
+                Dolorem, fuga! Expedita labore nemo doloremque ut! Ipsa numquam repellendus, nulla officia saepe quam!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam soluta voluptatem minus fugit 
+                impedit enim quod, qui ex fugiat. Omnis, consequuntur? Eligendi corporis ab rerum molestiae. 
+                Dolorem, fuga! Expedita labore nemo doloremque ut! Ipsa numquam repellendus, nulla officia saepe quam!</p>
+        </div>
+    </section>
+
+    <section class="gameboard my-3">
+        <div class="container gamecontainer">
+            <div class="row gamerow text-light text-center justify-content-center">
+                <div class="gametile col bg-dark mx-1">
+                    <div class="gamecontent"></div>
+                </div>
+                <div class="gametile col bg-dark mx-1">
+                    <div class="gamecontent"></div>
+                </div>
+                <div class="gametile col bg-dark mx-1">
+                    <div class="gamecontent"></div>
+                </div>
+                <div class="gametile col bg-dark mx-1">
+                    <div class="gamecontent"></div>
+                </div>
+                <div class="gametile col bg-dark mx-1">
+                    <div class="gamecontent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="keyboard mt-5">
+        <div class="container">
+            <div class="row keyboardrow text-light text-center justify-content-center">
+                <div class="key bg-dark col m-1"><div class="keycontent">Q</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">W</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">E</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">R</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">T</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">Y</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">U</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">I</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">O</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">P</div></div>
+            </div>
+            <div class="row keyboardrow text-light text-center justify-content-center">
+                <div class="key bg-dark col m-1"><div class="keycontent">A</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">S</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">D</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">F</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">G</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">H</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">J</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">K</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">L</div></div>
+            </div>
+            <div class="row keyboardrow text-light text-center justify-content-center">
+                <div class="movekey col m-1"><div class="keycontent" id="left"><i class="bi bi-caret-left"></i></div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">Z</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">X</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">C</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">V</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">B</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">N</div></div>
+                <div class="key bg-dark col m-1"><div class="keycontent">M</div></div>
+                <div class="movekey col m-1"><div class="keycontent" id="right"><i class="bi bi-caret-right"></i></div></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="visualscript.js"></script>
+    <script src="words.js"></script>
+    <script src="gamescript.js"></script>
+
+</body>
+</html>
