@@ -19,4 +19,29 @@ window.addEventListener('resize', width => {
         heightUpdt(".key")
         console.log("resizing")
     }
-  });
+});
+
+// Visualize which tile is active
+
+function addVisualIndicator(tile, row) {
+    let element = $(`#row-${row}`).find(".gamecontent")
+    removeVisualIndicator(element)
+
+    if (element[tile] == null) {
+        element[0].classList.add("highlight")
+        return
+    }
+
+    element[tile].classList.add("highlight")
+}
+
+// Removes indicator from all tiles
+function removeVisualIndicator(element) {
+
+    if (element == null) return
+
+    element.each(function(index){
+        element[index].classList.remove("highlight")
+    })
+
+}

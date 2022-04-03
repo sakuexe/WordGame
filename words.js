@@ -4,6 +4,12 @@
 // 4 letter nouns: 136
 // 4 letter verbs: 116
 
+// could be changed to a singular object ?
+// const words = {
+//    fiveLetterNouns: []
+//    fourLetterNouns: [] etc...
+//}
+
 var fiveLetterNouns = [
     "Abuse",
     "Adult",
