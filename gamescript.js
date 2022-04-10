@@ -11,6 +11,11 @@ var gamesize = 5
 var tile = 0;
 var row = 1;
 
+// randomize a word
+var wordIndex = Math.floor(Math.random() * 211)
+wordOfTheGame = fiveLetterNouns[wordIndex]
+console.log(wordOfTheGame)
+
 keys.click(function(e){
     if (tile < 0) tile = 0
 
@@ -38,15 +43,30 @@ specialKeys.click(function(e){
 function enterFunction() {
 
     if (checkFilledTiles() == false) return alert("Please fill in the whole row before pressing enter")
-    if (row == gamesize) return /* TODO: when last row is filled */
+
+    if (row == gamesize || proofreadRow($(`#row-${row}`).find(".gamecontent"), wordOfTheGame)) {
+
+        if(proofreadRow(!$(`#row-${row}`).find(".gamecontent"), wordOfTheGame)) return alert(`Game over, the word was ${wordOfTheGame}`)
+
+        console.log($("#result"))
+
+        $("#game-word")[0].innerHTML = wordOfTheGame
+
+        $("#result").css({ "display": "block" })
+        
+    }
 
     console.log(`changing to row: `)
-    console.log($(`#row-${row}`))
     removeVisualIndicator($(`#row-${row}`).find(".gamecontent"))
+
+    // checks for correct letters
+    proofreadRow($(`#row-${row}`).find(".gamecontent"), wordOfTheGame)
+
     //changes row
     tile = 0
     row++
     addVisualIndicator(tile, row)
+    
 }
 
 function deleteFunction(selectedTile) {
@@ -76,6 +96,3 @@ function findRow(row) {
     return $(`#row-${row}`)
 }
 
-// random index
-var wordIndex = Math.floor(Math.random() * 211)
-console.log(fiveLetterNouns[wordIndex])

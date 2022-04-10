@@ -1,6 +1,7 @@
 
 // script for visuals
 
+
 function heightUpdt(element){
     let elementWidth = $(element).width();
     $(element).css({
