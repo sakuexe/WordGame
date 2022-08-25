@@ -3,22 +3,22 @@
 
 
 function heightUpdt(element){
-    let elementWidth = $(element).width();
-    $(element).css({
-    'height': elementWidth + 'px'
-    });
+    let elementWidth = element[0].offsetWidth;
+
+    for (let i = 0; i < element.length; i++) {
+        element[i].style.height=elementWidth+'px'
+    }
 };
 
 // update game tile height when opening the window
-heightUpdt(".gametile");
-heightUpdt(".key");
+heightUpdt(document.querySelectorAll('.gametile'));
+heightUpdt(document.querySelectorAll('.key'));
 
 window.addEventListener('resize', width => {
     if (window.innerWidth < 992)
     {
-        heightUpdt(".gametile")
-        heightUpdt(".key")
-        console.log("resizing")
+        heightUpdt(document.querySelectorAll('.gametile'));
+        heightUpdt(document.querySelectorAll('.key'));
     }
 });
 
@@ -28,10 +28,7 @@ function addVisualIndicator(tile, row) {
     let element = $(`#row-${row}`).find(".gamecontent")
     removeVisualIndicator(element)
 
-    if (element[tile] == null) {
-        element[0].classList.add("highlight")
-        return
-    }
+    if (element[tile] == null) return element[0].classList.add("highlight")
 
     element[tile].classList.add("highlight")
 }

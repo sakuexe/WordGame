@@ -1,35 +1,33 @@
 
 // check if the word has same letters as the tiles
 
-function proofreadRow(selectedRow, word) {
+function proofReadWord(selectedRow, word) {
 
-    lettersArray = Array.from(word.toUpperCase())
+    word = word.toUpperCase()
 
     correspondingLetter(selectedRow, word)   // yellow light
-    if (matchingLetter(selectedRow)) return true    // green light
+    matchingLetter(selectedRow, word)        // green light
+
+    if (wordCheck(selectedRow, word)) return true
 }
 
 function correspondingLetter(selectedRow, word) {
 
-    $.each(selectedRow, function(index) {
+    for(let tile = 0; tile < selectedRow.length; tile++) {
+        if (word.includes(selectedRow[tile].innerHTML)) selectedRow[tile].classList.add('yellow')
 
-        if (lettersArray.includes(selectedRow[index].innerHTML)) {
-            console.log(`letter ${selectedRow[index].innerHTML} on tile ${index}, is in the real word`)
-            selectedRow[index].classList.add("yellow")
-            console.log(index)
-        }
-
-    });
+        console.log(`letter ${selectedRow[tile].innerHTML} on tile ${tile}, is in the real word`)
+    }
 
 }
 
-function matchingLetter(selectedRow) {
+function matchingLetter(selectedRow, word) {
 
     score = 0
 
     $.each(selectedRow, function(index) {
 
-        if (lettersArray[index] == selectedRow[index].innerHTML) {
+        if (word[index] == selectedRow[index].innerHTML) {
             console.log(`letter ${selectedRow[index].innerHTML} on tile ${index + 1}, matching the real word`)
             selectedRow[index].classList.add("green")
             score++
@@ -37,5 +35,16 @@ function matchingLetter(selectedRow) {
 
     });
 
-    if (score == lettersArray.length) return true
+    if (score == word.length) return true
+}
+
+function wordCheck(selectedRow, word) {
+
+    for (let letter = 0; letter < selectedRow.length; letter++) {
+        console.log(selectedRow[letter].innerHTML, word[letter])
+        if (selectedRow[letter].innerHTML != word[letter]) return console.log("word is not the same as winning word")
+    }
+    console.log('winning word!')
+    return true
+
 }
