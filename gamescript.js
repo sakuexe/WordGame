@@ -20,49 +20,56 @@ function findRow(row) {
     return document.querySelector(`#row-${row}`)
 }
 
-function keyFuntion(e){
+function keyFunction(e){
     if (tile < 0) tile = 0
 
     let CurrentRow = findRow(row)
 
-    CurrentRow.querySelectorAll(".gamecontent")[tile].innerHTML = $(e.target)[0].innerHTML
+    CurrentRow.querySelectorAll(".gamecontent")[tile].innerHTML = e.path[0].innerHTML
 
     if (tile + 1 < gamesize){
         tile++
-        addVisualIndicator(tile, row)
+        addVisualIndicator(tile, CurrentRow)
     }
 }
 
-function specialKeyFunction(e){
+function specialKeyFunction(pressed){
 
-    if ($(e.target)[0].id === "enter") return enterFunction()
+    if (pressed.path[0].id === "enter") return enterFunction()
 
-    deleteFunction(findRow(row).find(".gamecontent")[tile])
+    deleteFunction(findRow(row).querySelectorAll(".gamecontent")[tile - 1])
     
 }
 
 for (let i = 0; i < keys.length; i++) {
     keys[i].addEventListener('click', pressed => {
-        keyFuntion(pressed)
+        keyFunction(pressed)
+    })
+    keys[i].addEventListener('keypress', event => {
+        if (event.key === 'Enter') keyFunction(event)
     })
 }
 
 for (let i = 0; i < specialKeys.length; i++) {
     specialKeys[i].addEventListener('click', pressed => {
+        console.log(pressed)
         specialKeyFunction(pressed)
+    })
+    specialKeys[i].addEventListener('keypress', function(event) {
+        console.log(event)
+        if (event.key === 'Enter') specialKeyFunction(event)
     })
 }
 
 // functions
 
 
-
 function deleteFunction(selectedTile) {
     if (tile != -1) {
-        console.log(`Deleting tile: ${tile + 1}`)
+        console.log(`Deleting tile: ${tile + 1}`, selectedTile)
         selectedTile.innerHTML = ""
         tile -= 1
-        addVisualIndicator(tile, row)
+        addVisualIndicator(tile, findRow(row))
     }
 }
 
@@ -85,11 +92,11 @@ function enterFunction() {
     if (checkFilledTiles() == false) return alert('Please fill in the whole row before pressing enter')
 
     let currentRow = findRow(row)
+    removeVisualIndicator(currentRow)
 
     if (row == gamesize || proofReadWord(currentRow.querySelectorAll(".gamecontent"), wordOfTheGame)) {
 
         console.log(document.querySelector(`#row-${row}`))
-        if(proofReadWord(!currentRow.querySelectorAll(".gamecontent"), wordOfTheGame)) alert(`Game over, the word was ${wordOfTheGame}`)
 
         console.log(document.querySelector('#result'))
 
@@ -102,7 +109,6 @@ function enterFunction() {
     }
 
     console.log(`changing to row: `)
-    removeVisualIndicator($(`#row-${row}`).find('.gamecontent'))
 
     // checks for correct letters
     proofReadWord(currentRow.querySelectorAll('.gamecontent'), wordOfTheGame)
@@ -110,7 +116,7 @@ function enterFunction() {
     //changes row
     tile = 0
     row++
-    addVisualIndicator(tile, row)
+    addVisualIndicator(tile, findRow(row))
     
 }
 

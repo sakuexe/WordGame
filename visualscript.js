@@ -25,12 +25,12 @@ window.addEventListener('resize', width => {
 // Visualize which tile is active
 
 function addVisualIndicator(tile, row) {
-    let element = $(`#row-${row}`).find(".gamecontent")
-    removeVisualIndicator(element)
+    let element = row.querySelectorAll('.gametile')
+    removeVisualIndicator(row)
 
-    if (element[tile] == null) return element[0].classList.add("highlight")
+    if (element[tile] == null) return element[0].classList.add("highlight"), console.log(element[tile], 'is null')
 
-    element[tile].classList.add("highlight")
+    element[tile].querySelector('.gamecontent').classList.add("highlight")
 }
 
 // Removes indicator from all tiles
@@ -38,8 +38,8 @@ function removeVisualIndicator(element) {
 
     if (element == null) return
 
-    element.each(function(index){
-        element[index].classList.remove("highlight")
-    })
+    for (let index = 0; index < element.querySelectorAll('.gamecontent').length; index++) {
+        element.querySelectorAll('.gamecontent')[index].classList.remove('highlight')
+    }
 
 }
