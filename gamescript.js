@@ -1,7 +1,7 @@
 
 // game function script
 
-// retrieve the keyboard and the game board
+// retrieves the keys, board and sets the game size
 var keys = document.querySelectorAll(".key")
 var board = document.querySelectorAll(".gamerow")
 var specialKeys = document.querySelectorAll(".specialkey")
