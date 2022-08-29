@@ -28,7 +28,7 @@ function greenLetter(selectedRow, word) {
     }
 }
 
-function wordcheck(selectedRow, word) {
+function wordCheck(selectedRow, word) {
 
     for (let index = 0; index < selectedRow.length; index++) {
         let currentCharacter = selectedRow[index].innerHTML
