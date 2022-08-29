@@ -3,36 +3,36 @@
 
 function proofReadWord(selectedRow, word) {
 
+    // first the word is capitalized for easier comparing between the tiles
     word = word.toUpperCase()
 
-    yellowLetter(selectedRow, word)   // yellow light
-    greenLetter(selectedRow, word)        // green light
+    yellowLetter(selectedRow, word)       // yellow light checker
+    greenLetter(selectedRow, word)        // green light checker
 
-    if (wordCheck(selectedRow, word)) return true
+    if (wordCheck(selectedRow, word)) return true   // final comparison between the word and row's tiles
 }
 
 function yellowLetter(selectedRow, word) {
 
     for(let tile = 0; tile < selectedRow.length; tile++) {
-        if (word.includes(selectedRow[tile].innerHTML)) selectedRow[tile].classList.add('yellow')
-
-        console.log(`letter ${selectedRow[tile].innerHTML} on tile ${tile}, is in the real word`)
+        let currentCharacter = selectedRow[tile].innerHTML 
+        if (word.includes(currentCharacter)) selectedRow[tile].classList.add('yellow')
     }
-
 }
 
 function greenLetter(selectedRow, word) {
 
     for (let index = 0; index < selectedRow.length; index++) {
-        if (selectedRow[index].innerHTML == word[index]) selectedRow[index].classList.add('green')
+        let currentCharacter = selectedRow[index].innerHTML 
+        if (currentCharacter == word[index]) selectedRow[index].classList.add('green')
     }
-
 }
 
-function wordCheck(selectedRow, word) {
+function wordcheck(selectedRow, word) {
 
-    for (let letter = 0; letter < selectedRow.length; letter++) {
-        if (selectedRow[letter].innerHTML != word[letter]) return console.log("word is not the same as winning word")
+    for (let index = 0; index < selectedRow.length; index++) {
+        let currentCharacter = selectedRow[index].innerHTML
+        if (currentCharacter != word[index]) return false
     }
     console.log('winning word!')
     return true

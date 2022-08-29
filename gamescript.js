@@ -7,25 +7,28 @@ var board = document.querySelectorAll(".gamerow")
 var specialKeys = document.querySelectorAll(".specialkey")
 var gamesize = 5
 
-// adding a counter to calculate the tile
+// the two variables in charge of keeping track of the current tile and row
 var tile = 0
 var row = 1
 
-// randomize a word
+// pull a random word from the words.js file's fiveLetterNouns object via the randomly assigned number as an index
 var wordIndex = Math.floor(Math.random() * 211)
 wordOfTheGame = fiveLetterNouns[wordIndex]
-console.log(wordOfTheGame)
+console.log(wordOfTheGame) // TODO: remove this after completion
 
 function findRow(row) {
-    return document.querySelector(`#row-${row}`)
+    // finds the current active row in the game. Then takes it contents and forms an array of them
+    // this is done by using the current row variable's value (minus one) as an index
+    let activeRow = document.querySelectorAll('.gamerow')[row - 1]
+    return activeRow.querySelectorAll('.gamecontent')
 }
 
-function keyFunction(e){
+function keyFunction(key){
     if (tile < 0) tile = 0
 
     let CurrentRow = findRow(row)
 
-    CurrentRow.querySelectorAll(".gamecontent")[tile].innerHTML = e.path[0].innerHTML
+    CurrentRow[tile].innerHTML = key.path[0].innerHTML
 
     if (tile + 1 < gamesize){
         tile++
@@ -35,9 +38,9 @@ function keyFunction(e){
 
 function specialKeyFunction(pressed){
 
-    if (pressed.path[0].id === "enter") return enterFunction()
+    if (pressed.path[0].id === 'enter' || pressed.path[1].id === 'enter') return enterFunction()
 
-    deleteFunction(findRow(row).querySelectorAll(".gamecontent")[tile - 1])
+    deleteFunction(findRow(row)[tile - 1])
     
 }
 
@@ -75,43 +78,25 @@ function deleteFunction(selectedTile) {
 
 function checkFilledTiles() {
 
-    for (e = 0; e < gamesize; e++){
-        if (!findRow(row).querySelectorAll(".gamecontent")[e].innerHTML)
-        {
-            console.log(`Tile, ${e + 1} does NOT contain a letter`)
-            return false
-        }
+    for (let index = 0; index < gamesize; index++){
+        if (!findRow(row)[index].innerHTML) return false
     }
-
-    console.log("Row is full")
     return true
 }
 
 function enterFunction() {
 
-    if (checkFilledTiles() == false) return alert('Please fill in the whole row before pressing enter')
+    // if the check for filled tiles gives a false, exit function and throw an alert at the player
+    if (!checkFilledTiles()) return alert('Please fill in the ENTIRE row before pressing enter')
 
     let currentRow = findRow(row)
     removeVisualIndicator(currentRow)
 
-    if (row == gamesize || proofReadWord(currentRow.querySelectorAll(".gamecontent"), wordOfTheGame)) {
-
-        console.log(document.querySelector(`#row-${row}`))
-
-        console.log(document.querySelector('#result'))
-
-        document.querySelector('#game-word').innerHTML = wordOfTheGame
-
-        document.querySelector('#result').style.display = 'block'
-
-        return
+    if (row == gamesize && !proofReadWord(currentRow, wordOfTheGame)) return showResult(wordOfTheGame, false)
         
-    }
+    if (proofReadWord(currentRow, wordOfTheGame)) return showResult(wordOfTheGame, true)
 
     console.log(`changing to row: `)
-
-    // checks for correct letters
-    proofReadWord(currentRow.querySelectorAll('.gamecontent'), wordOfTheGame)
 
     //changes row
     tile = 0
@@ -119,4 +104,3 @@ function enterFunction() {
     addVisualIndicator(tile, findRow(row))
     
 }
-

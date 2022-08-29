@@ -24,22 +24,29 @@ window.addEventListener('resize', width => {
 
 // Visualize which tile is active
 
-function addVisualIndicator(tile, row) {
-    let element = row.querySelectorAll('.gametile')
-    removeVisualIndicator(row)
+function addVisualIndicator(tile, rowArray) {
+    removeVisualIndicator(rowArray)
 
-    if (element[tile] == null) return element[0].classList.add("highlight"), console.log(element[tile], 'is null')
+    if (rowArray[tile] == null) return rowArray[0].classList.add("highlight")
 
-    element[tile].querySelector('.gamecontent').classList.add("highlight")
+    rowArray[tile].classList.add("highlight")
 }
 
 // Removes indicator from all tiles
-function removeVisualIndicator(element) {
+function removeVisualIndicator(rowArray) {
 
-    if (element == null) return
+    if (rowArray == null) return
 
-    for (let index = 0; index < element.querySelectorAll('.gamecontent').length; index++) {
-        element.querySelectorAll('.gamecontent')[index].classList.remove('highlight')
+    for (let index = 0; index < rowArray.length; index++) {
+        rowArray[index].classList.remove('highlight')
     }
 
+}
+
+function showResult(wordOfTheGame, status) {
+        document.querySelector('#game-word').innerHTML = wordOfTheGame
+
+        document.querySelector('#gameStatus').innerHTML = (status) ? 'YOU WON' : 'YOU LOST'
+
+        document.querySelector('#result').style.display = 'block'
 }
