@@ -14,6 +14,8 @@ function proofReadWord(selectedRow, word) {
 
 function yellowLetter(selectedRow, word) {
 
+    // check every tile of given row and give a yellow border
+    // if the tile's character is within the current game's word
     for(let tile = 0; tile < selectedRow.length; tile++) {
         let currentCharacter = selectedRow[tile].innerHTML 
         if (word.includes(currentCharacter)) selectedRow[tile].classList.add('yellow')
@@ -36,5 +38,4 @@ function wordCheck(selectedRow, word) {
     }
     console.log('winning word!')
     return true
-
 }

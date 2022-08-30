@@ -8,7 +8,7 @@ function heightUpdt(element){
     for (let i = 0; i < element.length; i++) {
         element[i].style.height=elementWidth+'px'
     }
-};
+}
 
 // update game tile height when opening the window
 heightUpdt(document.querySelectorAll('.gametile'));
@@ -20,7 +20,7 @@ window.addEventListener('resize', width => {
         heightUpdt(document.querySelectorAll('.gametile'));
         heightUpdt(document.querySelectorAll('.key'));
     }
-});
+})
 
 // Visualize which tile is active
 
