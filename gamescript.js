@@ -2,9 +2,9 @@
 // game function script
 
 // retrieve the keyboard and the game board
-var keys = document.querySelectorAll(".key")
-var board = document.querySelectorAll(".gamerow")
-var specialKeys = document.querySelectorAll(".specialkey")
+var keys = document.querySelectorAll('.key')
+var board = document.querySelectorAll('.gamerow')
+var specialKeys = document.querySelectorAll('.specialkey')
 var gamesize = 5
 
 // the two variables in charge of keeping track of the current tile and row
@@ -40,7 +40,7 @@ function specialKeyFunction(pressed){
 
     if (pressed.path[0].id === 'enter' || pressed.path[1].id === 'enter') return enterFunction()
 
-    deleteFunction(findRow(row)[tile - 1])
+    deleteFunction(findRow(row)[tile]) 
     
 }
 
@@ -69,8 +69,7 @@ for (let i = 0; i < specialKeys.length; i++) {
 
 function deleteFunction(selectedTile) {
     if (tile != -1) {
-        console.log(`Deleting tile: ${tile + 1}`, selectedTile)
-        selectedTile.innerHTML = ""
+        selectedTile.innerHTML = ''
         tile -= 1
         addVisualIndicator(tile, findRow(row))
     }

@@ -1,14 +1,32 @@
+:root {
+    --purple: rgb(160, 105, 231);
+    --yellow: rgb(214, 171, 52, .85);
+    --green: rgb(91, 216, 91, .850);
+}
+
 .info {
     width: 50%;
 }
 
 #result {
-    display: none;
-    transition: width 0s 1s ease-in-out;
+    opacity: 0;
+    transition: 1s ease-in-out;
+    margin-bottom: -15em;
+}
+
+#replaybtn {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid var(--purple);
+    border-radius: 0.5em;
+}
+
+#replaybtn:hover {
+    background-color: var(--purple);
+    transition: 0.5s ease;
 }
 
 .help {
-    color:rgb(160, 105, 231);
+    color: var(--purple);
 }
 
 /* Gameboard */
@@ -24,7 +42,7 @@
     display: table;
     border-radius: 10px;
     filter: drop-shadow(0 -5px 5px #626d791f);
-    border: 1px solid rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(255, 255, 255, 0.178);
 }
 
 .gamecontent {
@@ -87,19 +105,22 @@
 
 .gamecontent.highlight {
     /* animation: pulse 1.5s ease-in-out 0.1s 1; */
-    border: 1px solid rgba(160, 105, 231, 0.466);
+    transition: .5s ease;
+    border: 1px solid var(--purple);
     border-radius: 10px;
 }
 
 .gamecontent.yellow {
     /* animation: pulse 1.5s ease-in-out 0.1s 1; */
-    border: 1px solid rgba(229, 231, 105, 0.466);
+    transition: .5s ease;
+    border: 1px solid var(--yellow);
     border-radius: 10px;
 }
 
 .gamecontent.green {
     /* animation: pulse 1.5s ease-in-out 0.1s 1; */
-    border: 1px solid rgba(105, 231, 116, 0.466);
+    transition: .5s ease;
+    border: 1px solid var(--green);
     border-radius: 10px;
 }
 
