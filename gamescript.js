@@ -28,7 +28,8 @@ function keyFunction(key){
 
     let CurrentRow = findRow(row)
 
-    CurrentRow[tile].innerHTML = key.path[0].innerHTML
+    if (key.type === 'click') CurrentRow[tile].innerHTML = key.path[0].innerHTML
+    else CurrentRow[tile].innerHTML = key.toUpperCase()
 
     if (tile + 1 < gamesize){
         tile++
@@ -64,8 +65,17 @@ for (let i = 0; i < specialKeys.length; i++) {
     })
 }
 
-// functions
+// if a key (that is a letter) on the keyboard is pressed, it gets added into the tile
+document.addEventListener('keydown', pressed => {
+    let letterArray =
+    ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
+    if (letterArray.includes(pressed.key) || letterArray.includes(pressed.key.toLowerCase())) return keyFunction(pressed.key)
+    if (pressed.key === 'Enter' || pressed.key == 'Return') return enterFunction()
+    if (pressed.key === 'Backspace' || pressed.key === 'Delete') return deleteFunction(findRow(row)[tile])
+})
+
+// functions
 
 function deleteFunction(selectedTile) {
     if (tile != -1) {
@@ -86,7 +96,7 @@ function checkFilledTiles() {
 function enterFunction() {
 
     // if the check for filled tiles gives a false, exit function and throw an alert at the player
-    if (!checkFilledTiles()) return alert('Please fill in the ENTIRE row before pressing enter')
+    if (!checkFilledTiles()) return alert('Please fill in the ENTIRE row before pressing enter'), enterWarning(findRow(row), tile)
 
     let currentRow = findRow(row)
     removeVisualIndicator(currentRow)

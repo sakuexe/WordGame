@@ -47,3 +47,15 @@ function showResult(wordOfTheGame, status) {
         document.querySelector('#result').style.opacity = '100%'
         document.querySelector('#result').style.marginBottom = '0em'
 }
+
+// warning when enter is pressed before the row is filled
+function enterWarning(row, tile) {
+    console.log('testi 1')
+    for (let index = tile; index < row.length; index++) {
+       // add visual indicator to rest of the tiles not filled yet 
+	   row[index].classList.add('warning')
+    }
+    setTimeout(() => {
+		for(let index = 0; index < row.length; index++) row[index].classList.remove('warning')
+	}, 2000)
+}
