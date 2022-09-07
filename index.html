@@ -17,9 +17,9 @@
             <p class="m-0 text-center opacity-75 mt-3">The word was</p>
             <h1 class="display-1 m-0 text-uppercase text-center" id="game-word">a word</h1>
 
-            <p class="text-center opacity-75" id="gameStatus" tabindex="1">result here</p>
+            <p class="text-center opacity-75" id="gameStatus">result here</p>
 
-            <button onClick="window.location.reload();" class="mx-auto d-block text-light p-3 btn-secondary">Play again!</button>
+            <button onClick="window.location.reload();" class="mx-auto d-block text-light p-3 btn-secondary" tabindex="1">Play again!</button>
 
         </div>
     </section>
@@ -154,24 +154,29 @@
     </section>
 
     <div class="container">
-        <a href="#" class="position-fixed bottom-0 end-0 px-4 py-5 text-decoration-none help" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <a href="#" class="position-fixed bottom-0 end-0 px-4 py-5 text-decoration-none help" data-bs-toggle="modal" data-bs-target="#helpModal" tabindex="0">
             <i class="bi bi-info-circle h1"></i>
         </a>
     </div>
 
+    <div class="container justify-content-center my-5 d-sm-none">
+        <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#helpModal" tabindex="0">Need help?</button>
+    </div>
+
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-light">
         <div class="modal-header border-purple">
-            <h5 class="modal-title" id="exampleModalLabel">User Manual</h5>
+            <h5 class="modal-title" id="helpModalLabel">User Manual</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
            <div>
                 <h5 class="text-uppercase">About the game</h5>
                 <p class="opacity-75">The game is simple, at the start <span class="fw-bold">it</span> has chosen a random word and now <span class="fw-bold">you</span> have to guess it.
-                    This works by clicking the keys given below the board until the row is filled. Afterwards you can press the <span class="fw-bold">"Enter <i class="bi bi-caret-down"></i>"</span> -key and the game will check 
+                    This works by clicking the keys given below the board until the row is filled. You can also use your device's keyboard for this game.
+                    Afterwards you can press the <span class="fw-bold">"Enter <i class="bi bi-caret-down"></i>"</span> -key and the game will check 
                     if your word matches the one <span class="fw-bold">it's</span> chosen. The checking process will give you visual hints based on how well the guess went.
                     the hints are as follows:
                 </p>

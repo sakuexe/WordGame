@@ -138,22 +138,16 @@
 }
 
 .gamecontent.warning {
-    /* animation: pulse 1.5s ease-in-out 0.1s 1; */
-    transition: .5s ease;
-    border: 1px solid var(--red);
+    animation: fade 1s ease-in-out 0.1s 3;
+    /* transition: .5s ease; */
+    border: 1px solid rgba(0, 0, 255, 0);
     border-radius: 10px;
 }
 
-/* @keyframes fade{
-    0%   {background-color:rgba(255, 0, 0, 0);}
-    100%  {background-color:rgba(0, 0, 255, 0);}
-}
-*/
-
-/* bottom of page */
-
-footer {
-    filter: drop-shadow(0 -5px 5px #626d7910);
+@keyframes fade{
+    0%  {border-color:rgba(0, 0, 255, 0);}
+    50%   {border-color: var(--red);}
+    100%  {border-color:rgba(0, 0, 255, 0);}
 }
 
 @media (max-width: 576px) {
@@ -166,6 +160,10 @@ footer {
     .info {
         width: 90%;
         padding: 0;
+    }
+
+    .help {
+        display: none;
     }
 
 }

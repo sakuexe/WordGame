@@ -57,5 +57,5 @@ function enterWarning(row, tile) {
     }
     setTimeout(() => {
 		for(let index = 0; index < row.length; index++) row[index].classList.remove('warning')
-	}, 2000)
+	}, 3000)
 }

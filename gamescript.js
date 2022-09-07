@@ -96,7 +96,7 @@ function checkFilledTiles() {
 function enterFunction() {
 
     // if the check for filled tiles gives a false, exit function and throw an alert at the player
-    if (!checkFilledTiles()) return alert('Please fill in the ENTIRE row before pressing enter'), enterWarning(findRow(row), tile)
+    if (!checkFilledTiles()) return enterWarning(findRow(row), tile)
 
     let currentRow = findRow(row)
     removeVisualIndicator(currentRow)
