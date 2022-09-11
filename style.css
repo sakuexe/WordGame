@@ -54,8 +54,8 @@
     max-width: 110px;
     display: table;
     border-radius: 10px;
-    filter: drop-shadow(0 -5px 5px #626d791f);
-    border: 1px solid rgba(255, 255, 255, 0.178);
+    filter: brightness(120%);
+    /* drop-shadow(0 -5px 5px #626d791f); */
 }
 
 .gamecontent {
@@ -73,7 +73,13 @@
     margin: 0;
     display: table;
     border-radius: 10px;
-    filter: drop-shadow(0 -5px 5px #626d791f);
+    transition: 1s ease;
+    filter: brightness(120%);
+    /* drop-shadow(0 -5px 5px #626d791f); */
+}
+
+.key.grey {
+    filter: opacity(20%);
 }
 
 .specialkey {
@@ -81,6 +87,8 @@
     padding: 0;
     margin: 0;
     display: table;
+    filter: brightness(120%);
+    /* drop-shadow(0 -5px 5px #626d791f); */
 }
 
 #delete, #enter {
@@ -94,7 +102,7 @@
     vertical-align: middle;
 }
 
-.key:hover{
+.key:hover:not(.key.grey){
     filter: brightness(1.4);
 }
 
